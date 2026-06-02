@@ -10,11 +10,14 @@ from src.utils.logger import logger
 
 class MermaidRenderer:
     def __init__(self):
-        # Prefer project-local mmdc over system-wide
+        # Prefer project-local mmdc over system-wide (cross-platform)
         project_root = Path(__file__).parent.parent.parent
         local_mmdc = project_root / "node_modules" / ".bin" / "mmdc.cmd"
+        local_mmdc_unix = project_root / "node_modules" / ".bin" / "mmdc"
         if local_mmdc.exists():
             self.cli_path = str(local_mmdc)
+        elif local_mmdc_unix.exists():
+            self.cli_path = str(local_mmdc_unix)
         else:
             self.cli_path = settings.mermaid_cli_path
         self.api_url = settings.mermaid_api_url

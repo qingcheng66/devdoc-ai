@@ -18,9 +18,9 @@ class Settings(BaseSettings):
     # ChromaDB
     chroma_persist_dir: str = Field("data/chroma_db", env="CHROMA_PERSIST_DIR")
 
-    # Pandoc
-    pandoc_path: str = Field("C:/work/pandoc-3.9.0.2/pandoc.exe", env="PANDOC_PATH")
-    pandoc_output_dir: str = Field("C:/work/pandoc-3.9.0.2/word", env="PANDOC_OUTPUT_DIR")
+    # Pandoc (optional, install via apt-get install pandoc on Linux)
+    pandoc_path: str = Field("pandoc", env="PANDOC_PATH")
+    pandoc_output_dir: str = Field("/tmp/pandoc_output", env="PANDOC_OUTPUT_DIR")
 
     # PPT template (external .pptx template with {{placeholder}} text)
     ppt_template_path: str = Field("", env="PPT_TEMPLATE_PATH")
